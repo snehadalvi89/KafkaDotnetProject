@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\snehad2\\Desktop\\Kafka\\KafkaProject\\KafkaProject.csproj": {}
+    "C:\\Users\\snehad2\\Desktop\\Kafka\\KafkaDotnetProject\\KafkaProject.csproj": {}
   },
   "projects": {
-    "C:\\Users\\snehad2\\Desktop\\Kafka\\KafkaProject\\KafkaProject.csproj": {
+    "C:\\Users\\snehad2\\Desktop\\Kafka\\KafkaDotnetProject\\KafkaProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\snehad2\\Desktop\\Kafka\\KafkaProject\\KafkaProject.csproj",
+        "projectUniqueName": "C:\\Users\\snehad2\\Desktop\\Kafka\\KafkaDotnetProject\\KafkaProject.csproj",
         "projectName": "KafkaProject",
-        "projectPath": "C:\\Users\\snehad2\\Desktop\\Kafka\\KafkaProject\\KafkaProject.csproj",
+        "projectPath": "C:\\Users\\snehad2\\Desktop\\Kafka\\KafkaDotnetProject\\KafkaProject.csproj",
         "packagesPath": "C:\\Users\\snehad2\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\snehad2\\Desktop\\Kafka\\KafkaProject\\obj\\",
+        "outputPath": "C:\\Users\\snehad2\\Desktop\\Kafka\\KafkaDotnetProject\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\snehad2\\AppData\\Roaming\\NuGet\\NuGet.Config",
