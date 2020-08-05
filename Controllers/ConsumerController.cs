@@ -17,6 +17,8 @@ using Microsoft.AspNetCore.Http;
 using System.Net;
 using Microsoft.AspNetCore.Identity;
 using System.IO;
+using Newtonsoft.Json.Schema;
+using Newtonsoft.Json.Linq;
 
 namespace KafkaProject.Controllers
 {
@@ -33,50 +35,55 @@ namespace KafkaProject.Controllers
         }
 
 
-
-        
-
-        [HttpGet]
-        public IActionResult Get()
+        public void MergedData()
         {
+         
+
+
+            List<dynamic> data1;
+            List<dynamic> data2;
+           
+
             //join code
-            List<Employee> employees = new List<Employee>();
-            List<Department> department = new List<Department>();
+            bool data1valid = false;
+            bool data2valid = false;
+            string serializedmergeddata = String.Empty;
             string filename1 = "employee" + System.DateTime.Now.ToString("ddMMyyyy") + ".json";
             using (StreamReader r = new StreamReader(@"C:\Users\snehad2\Desktop\Kafka\Files\Employee\" + filename1))
             {
                 string json = r.ReadToEnd();
-                employees = JsonConvert.DeserializeObject<List<Employee>>(json);
-                //var items = JsonConvert.DeserializeObject<Employee>(json);
+                data1 = JsonConvert.DeserializeObject<List<dynamic>>(json);
+                JSchema schema = JSchema.Parse(System.IO.File.ReadAllText("Employee.json"));
+                JArray emparray = JArray.Parse(json);
+                //JObject jsonobject = JObject.Parse(j.ToString());
+                 data1valid = emparray.IsValid(schema);
             }
 
-            //string filename2 = "department" + System.DateTime.Now.ToString("ddMMyyyy") + ".json";
-            //using (StreamReader r = new StreamReader(@"C:\Users\snehad2\Desktop\Kafka\Files\Department\" + filename2))
-            //{
-            //    string json = r.ReadToEnd();
-            //    department = JsonConvert.DeserializeObject<List<Department>>(json);
-            //    //var items = JsonConvert.DeserializeObject<Employee>(json);
-            //}
+            string filename2 = "department" + System.DateTime.Now.ToString("ddMMyyyy") + ".json";
+            using (StreamReader r = new StreamReader(@"C:\Users\snehad2\Desktop\Kafka\Files\Department\" + filename2))
+            {
+                string json = r.ReadToEnd();
+                data2 = JsonConvert.DeserializeObject<List<dynamic>>(json);
+                //JSchema schema = JSchema.Parse(System.IO.File.ReadAllText("department.json"));
+                //JArray deparray = JArray.Parse(json);
+                //data2valid= deparray.IsValid(schema);
+                data2valid = true;
+            }
 
-            //var data=( from emp in employees
-            //join dep in department
-            //on emp.DepartmentId equals dep.DepartmentId 
+            if (data1valid == true && data2valid == true)
+            {
+                var data3 = (from d1 in data1
+                             join d2 in data2
+                             on d1.DepartmentId equals d2.DepartmentId
+                             select new { d1.EmployeeID, d1.FirstName, d1.LastName, d2.DepartmentName });
 
-            //           select new { emp.EmployeeID,emp.FirstName,emp.LastName, dep.DepartmentName });
+                serializedmergeddata = Newtonsoft.Json.JsonConvert.SerializeObject(data3);
+            }
+           
 
-            //string matchedDataOutput= Newtonsoft.Json.JsonConvert.SerializeObject(data);
-
-
-            //var notMatchedData =
-            //    from e in employees
-            //    where !data.Any(x => x.EmployeeID == e.EmployeeID)
-            //    select e;
-
-            //string unmatchedDataOutput = Newtonsoft.Json.JsonConvert.SerializeObject(notMatchedData);
-
-            //string filename3 = "Logs" + System.DateTime.Now.ToString("ddMMyyyy") + ".json";
-            ////string output = Newtonsoft.Json.JsonConvert.SerializeObject(cr.Message.Value, Newtonsoft.Json.Formatting.None);
-            //System.IO.File.WriteAllText(@"C:\Users\snehad2\Desktop\Kafka\Files\Logs\" + filename3, matchedDataOutput);
+            // string filename3 = "Logs" + System.DateTime.Now.ToString("ddMMyyyy") + ".json";
+            //string output = Newtonsoft.Json.JsonConvert.SerializeObject(cr.Message.Value, Newtonsoft.Json.Formatting.None);
+            //System.IO.File.WriteAllText(@"C:\Users\snehad2\Desktop\Kafka\Files\Logs\" + filename3, hj);
 
 
             string result = string.Empty;
@@ -85,13 +92,24 @@ namespace KafkaProject.Controllers
                 BootstrapServers = "localhost:9092"
             };
 
+            using (var producer = new ProducerBuilder<Null, String>(producerconfig).Build())
+            {
+                producer.ProduceAsync("NewTopic", new Message<Null, string>() { Value = serializedmergeddata });
+                producer.Flush(TimeSpan.FromSeconds(10));
+            }
+        }
+        
 
-            //using (var producer = new ProducerBuilder<Null, String>(producerconfig).Build())
-            //{
-            //    producer.ProduceAsync("NewTopic", new Message<Null, string>() { Value = matchedDataOutput });
-            //    producer.Flush(TimeSpan.FromSeconds(10));
-            //}
+        [HttpGet]
+        public IActionResult Get()
+        {
+            MergedData();
 
+            string result = string.Empty;
+            var producerconfig = new ProducerConfig
+            {
+                BootstrapServers = "localhost:9092"
+            };
 
             using (var consumert = new ConsumerBuilder<Null, String>(_consumerconfig).Build())
             {

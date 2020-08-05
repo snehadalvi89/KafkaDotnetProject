@@ -210,11 +210,8 @@ C:\Users\snehad2\Desktop\Kafka\KafkaDotnetProject\bin\Debug\netcoreapp3.1\runtim
 C:\Users\snehad2\Desktop\Kafka\KafkaDotnetProject\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\msvcp120.dll
 C:\Users\snehad2\Desktop\Kafka\KafkaDotnetProject\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\msvcr120.dll
 C:\Users\snehad2\Desktop\Kafka\KafkaDotnetProject\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\zlib.dll
-C:\Users\snehad2\Desktop\Kafka\KafkaDotnetProject\obj\Debug\netcoreapp3.1\KafkaProject.csprojAssemblyReference.cache
 C:\Users\snehad2\Desktop\Kafka\KafkaDotnetProject\obj\Debug\netcoreapp3.1\KafkaProject.AssemblyInfoInputs.cache
 C:\Users\snehad2\Desktop\Kafka\KafkaDotnetProject\obj\Debug\netcoreapp3.1\KafkaProject.AssemblyInfo.cs
-C:\Users\snehad2\Desktop\Kafka\KafkaDotnetProject\obj\Debug\netcoreapp3.1\KafkaProject.csproj.CoreCompileInputs.cache
-C:\Users\snehad2\Desktop\Kafka\KafkaDotnetProject\obj\Debug\netcoreapp3.1\KafkaProject.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\snehad2\Desktop\Kafka\KafkaDotnetProject\obj\Debug\netcoreapp3.1\KafkaProject.RazorTargetAssemblyInfo.cache
 C:\Users\snehad2\Desktop\Kafka\KafkaDotnetProject\obj\Debug\netcoreapp3.1\KafkaProject.csproj.CopyComplete
 C:\Users\snehad2\Desktop\Kafka\KafkaDotnetProject\obj\Debug\netcoreapp3.1\staticwebassets\KafkaProject.StaticWebAssets.Manifest.cache
@@ -222,3 +219,8 @@ C:\Users\snehad2\Desktop\Kafka\KafkaDotnetProject\obj\Debug\netcoreapp3.1\static
 C:\Users\snehad2\Desktop\Kafka\KafkaDotnetProject\obj\Debug\netcoreapp3.1\KafkaProject.dll
 C:\Users\snehad2\Desktop\Kafka\KafkaDotnetProject\obj\Debug\netcoreapp3.1\KafkaProject.pdb
 C:\Users\snehad2\Desktop\Kafka\KafkaDotnetProject\obj\Debug\netcoreapp3.1\KafkaProject.genruntimeconfig.cache
+C:\Users\snehad2\Desktop\Kafka\KafkaDotnetProject\obj\Debug\netcoreapp3.1\KafkaProject.csprojAssemblyReference.cache
+C:\Users\snehad2\Desktop\Kafka\KafkaDotnetProject\bin\Debug\netcoreapp3.1\Employee.json
+C:\Users\snehad2\Desktop\Kafka\KafkaDotnetProject\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Schema.dll
+C:\Users\snehad2\Desktop\Kafka\KafkaDotnetProject\obj\Debug\netcoreapp3.1\KafkaProject.csproj.CoreCompileInputs.cache
+C:\Users\snehad2\Desktop\Kafka\KafkaDotnetProject\obj\Debug\netcoreapp3.1\KafkaProject.MvcApplicationPartsAssemblyInfo.cache

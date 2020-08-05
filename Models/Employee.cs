@@ -9,7 +9,7 @@ namespace KafkaProject.Models
 {
     public class Employee
     {
-        [JsonProperty(Required = Required.Always)]
+       // [Required(ErrorMessage = "Id is required")]
         public int EmployeeID { get; set; }
 
         public string FirstName { get; set; }

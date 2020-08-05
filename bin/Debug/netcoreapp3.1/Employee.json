@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "array",
+  "items": [
+    {
+      "type": "object",
+      "properties": {
+        "EmployeeID": {
+          "not": { "type": "null" },
+          "minLength": 1
+       
+
+        },
+        "FirstName": {
+          "not": { "type": "null" },
+          "minLength": 1
+
+        },
+
+        "DepartmentId": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "EmployeeID",
+        "FirstName",
+        "DepartmentId"
+      ]
+    }
+
+  ]
+}
